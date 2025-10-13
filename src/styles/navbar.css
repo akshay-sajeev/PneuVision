@@ -1,0 +1,56 @@
+:root {
+  --pv-purple: #7b4ff3;
+  --pv-deep: #7b38e6;
+  --pv-lilac: #d8c3ff;
+}
+
+.app-header {
+  width: 100vw;
+  background: transparent;
+  height: 72px;
+  position: relative;
+  border-bottom: 3px solid #000;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  left: 0;
+  padding: 0;
+}
+
+.app-header nav {
+  position: absolute;
+  right: 2rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.app-title {
+  color: var(--pv-purple);
+  font-weight: 700;
+  font-size: 28px;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  z-index: 30;
+  margin: 0;
+}
+
+.nav-link {
+  color: #111;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  z-index: 40;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-home {
+  background: linear-gradient(180deg, #b894ff, var(--pv-deep));
+  color: white !important;
+  border-radius: 1rem;
+}
