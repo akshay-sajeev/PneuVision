@@ -1,10 +1,19 @@
 import './styles/App.css';
-import './styles/navbar.css'
+import './styles/navbar.css';
+import Home from "./Home.tsx";
+
+function App() {
+  return (
+    <Home />
+  );
+}
+
+/** 
 
 function App() {
   return (
     <div className="app-root">
-  {/* Header Banner */}
+ 
   <header className="app-header">
     <h1 className="app-title">PneuVision</h1>
     <nav>
@@ -13,7 +22,7 @@ function App() {
     </nav>
   </header>
 
-  {/* Main Section */}
+
   <main className="container">
     <div className="login-card">
       <input
@@ -33,5 +42,5 @@ function App() {
 </div>
   );
 }
-
+*/
 export default App;
