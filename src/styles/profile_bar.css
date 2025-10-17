@@ -1,8 +1,8 @@
-.profile_bar {
+.profile-bar {
     background-color:blueviolet;
     color: white;
     left: 0;
-    top: 0;
+    top: var(--navbar-height);
     height: 100vh;
     width: 10vw;
     flex-direction: column;
@@ -11,18 +11,23 @@
     overflow: hidden;
 }
 
-.profile_bar.expanded {
+.profile-bar.expanded {
     width: 20vw;
 }
 
-.profile_options {
-    padding-top: 5vh;
+.profile-options {
     gap: 1px;
     display: flex;
     flex-direction: column;
 }
 
-.pb_el {
+.pb-header {
+    color: white;
+    font-size: xx-large;
+}
+
+.pb-el {
     padding: 2vh;
     background-color: blueviolet;
+    color: white;
 }

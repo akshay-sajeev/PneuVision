@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "../styles/profile_bar.css"
 
 export default function ProfileBar() {
@@ -6,21 +6,25 @@ export default function ProfileBar() {
 
   return (
     <div 
-      id="profile_bar" 
-      className={`profile_bar ${isOpen ? "expanded" : ""}`}
-      onClick={() => setIsOpen(isOpen => !isOpen)}
+      id="profile-bar" 
+      className={`profile-bar ${isOpen ? "expanded" : ""}`}
     >
-      <div className="pb_header"></div>
-      <div className="profile_options">
-        <button id="logout" className="pb_el">
-          {isOpen && <span>Log Out</span>}
-        </button>
-        <button id="account" className="pb_el">
-          {isOpen && <span>Account</span>}
-        </button>
-        <button id="profile" className="pb_el">
-          {isOpen && <span>Profile</span>}
-        </button>
+      <div 
+        className="pb-header"
+        onClick={() => setIsOpen(isOpen => !isOpen)}
+      >
+        ☰
+      </div>
+      <div className="profile-options">
+          {isOpen && <button id="logout" className="pb-el">
+            Log Out
+          </button>}
+          {isOpen && <button id="Account" className="pb-el">
+            Account
+          </button>}
+          {isOpen && <button id="Profile" className="pb-el">
+            Profile 
+          </button>}
       </div>
     </div>
   );

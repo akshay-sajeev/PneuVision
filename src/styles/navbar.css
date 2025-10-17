@@ -2,13 +2,16 @@
   --pv-purple: #7b4ff3;
   --pv-deep: #7b38e6;
   --pv-lilac: #d8c3ff;
+  --navbar-height: 72px;
 }
 
 .app-header {
+  top: 0;
   width: 100vw;
+  height: var(--navbar-height);
+  position: fixed;
+  box-sizing: border-box;
   background: transparent;
-  height: 72px;
-  position: relative;
   border-bottom: 3px solid #000;
   z-index: 20;
   display: flex;
