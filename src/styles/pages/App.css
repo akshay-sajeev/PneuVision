@@ -1,12 +1,11 @@
 #root {
   max-width: 100%;
   margin: 0 auto;
-  padding: 0;
   text-align: center;
   height: 100%
 }
 
-/* App specific styles to match the provided design */
+
 :root {
   --pv-purple: #7b4ff3;
   --pv-deep: #7b38e6;
@@ -20,15 +19,13 @@ html, body, #root {
 .app-root {
   min-height: 100vh;
   width: 100vw;
-  /*border: 4px solid var(--pv-purple);*/
-  /*box-sizing: border-box;*/
+  
   background: #fff;
   overflow-x: hidden;
   overflow-y: hidden;
   position: relative;
 }
 
-/* make the root a centered column so header and main stack and center */
 .app-root {
   min-height: 100vh;
   width: 100vw;
@@ -40,7 +37,6 @@ html, body, #root {
   flex-direction: column;
   align-items: center;
   margin: 0; 
-  padding: 0;
 }
 
 .login-card {
@@ -67,7 +63,7 @@ html, body, #root {
   box-shadow: none;
   width: 220px;
   max-width: 76%;
-  text-align: center; /* center placeholder and input text */
+  text-align: center; 
   font-size: 0.95rem;
 }
 
@@ -88,7 +84,6 @@ html, body, #root {
   box-shadow: 0 10px 20px rgba(123,79,243,0.18);
 }
 
-/* Center spacing for the card */
 main.container {
   height: calc(100vh - 72px);
   display: flex;
@@ -97,12 +92,10 @@ main.container {
   padding-top: 10vh;
 }
 
-/* ensure no dark vertical bar appears on the left */
 html, body, #root, .app-root {
   background: #fff;
 }
 
-/* Larger screens: make card a bit wider and centered vertically like the screenshot */
 @media (min-width: 1200px) {
   .login-card {
     width: 320px;
@@ -118,7 +111,6 @@ html, body, #root, .app-root {
     height: 58px;
     font-size: 1.4rem;
   }
-  /* larger top padding on wide screens for visual balance */
   main.container {
     padding-top: 160px;
   }
