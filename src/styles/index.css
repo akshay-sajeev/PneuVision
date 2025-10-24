@@ -1,4 +1,4 @@
-
+/* Adding full-width rules for #root */
 #root {
   width: 100%;
   margin: 0;
@@ -10,9 +10,9 @@
   line-height: 1.5;
   font-weight: 400;
 
-  
+  /* force a light theme base for this app */
   color-scheme: light;
-  color: #111; 
+  color: #111; /* dark text */
   background-color: #ffffff;
 
   font-synthesis: none;
