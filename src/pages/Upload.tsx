@@ -1,11 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import "../styles/pages/upload.css";
 
-
-
-
-
-
 export default function Upload() {
   const [file, setFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
@@ -105,7 +100,7 @@ export default function Upload() {
           </button>
         </div>
 
-        {/* Centered preview */}
+        
         {previewUrl && (
           <div className="preview-wrap">
             <img src={previewUrl} alt="Selected X-ray" className="preview-img" />
