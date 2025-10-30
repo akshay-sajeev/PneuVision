@@ -1,0 +1,33 @@
+.profile-bar {
+    background-color:blueviolet;
+    color: white;
+    left: 0;
+    top: var(--navbar-height);
+    height: 100vh;
+    width: 10vw;
+    flex-direction: column;
+    position: fixed;
+    transition: width 0.3 ease;
+    overflow: hidden;
+}
+
+.profile-bar.expanded {
+    width: 20vw;
+}
+
+.profile-options {
+    gap: 1px;
+    display: flex;
+    flex-direction: column;
+}
+
+.pb-header {
+    color: white;
+    font-size: xx-large;
+}
+
+.pb-el {
+    padding: 2vh;
+    background-color: blueviolet;
+    color: white;
+}
