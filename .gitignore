@@ -1,24 +1,42 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
+# dependencies
+node_modules/
+frontend/node_modules/
+dist/
+build/
+.vite/
+.cache/
 
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# OS / editor
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+*.log
+
+# env
+.env*
+package-lock.json
+# dependencies
+node_modules/
+frontend/node_modules/
+
+# builds / caches
+dist/
+build/
+.vite/
+.cache/
+
+# editors / OS
+.vscode/
+.DS_Store
+
+# logs / env
+*.log
+.env*
+node_modules/
+frontend/node_modules/
+dist/
+build/
+.vite/
+.cache/
+.vscode/
+.DS_Store
+*.log
+.env*

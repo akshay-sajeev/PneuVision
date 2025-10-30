@@ -4,6 +4,7 @@ import Home from "./Home";
 import ProfileBar from "./components/ProfileBar";
 import Navbar from "./components/Navbar";
 import Login from "./Login";
+import Upload from "./pages/Upload";
 import "./styles/App.css";
 
 /**
@@ -42,6 +43,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/upload" element={<Upload />} />
       </Routes>
     </div>
   );
