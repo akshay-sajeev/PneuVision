@@ -9,9 +9,14 @@
     position: fixed;
     transition: width 0.3 ease;
     overflow: hidden;
+    transition: all 1s;
 }
 
 .profile-bar.expanded {
+    background-color: white;
+    border-right: 2px solid blueviolet;
+    color: blueviolet;
+    border-width: 2px;
     width: 20vw;
 }
 
@@ -22,12 +27,11 @@
 }
 
 .pb-header {
-    color: white;
     font-size: xx-large;
 }
 
 .pb-el {
     padding: 2vh;
-    background-color: blueviolet;
-    color: white;
+    background-color: inherit;
+    color: blueviolet;
 }

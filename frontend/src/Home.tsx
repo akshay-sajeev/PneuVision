@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Home() {
     return (
       <div> 
@@ -13,9 +15,9 @@ function Home() {
               intended to complement, not replace, clinical expertise, enhancing 
               accuracy and efficiency in diagnostic workflows.
             </p>  
-            <div>
+            <Link to="/upload">
               <button className="signin-btn">Upload Scan</button>
-            </div>
+            </Link>
           </div>
         </main>
       </div>
