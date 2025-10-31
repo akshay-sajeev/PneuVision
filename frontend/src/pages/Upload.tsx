@@ -26,7 +26,7 @@ export default function UploadPage() {
     <div className="up-root">
       <Navbar />
       <ProfileBar />
-      <div className="up-divider" />
+      
 
       <main className="up-main">
         <h2 className="up-section-title">Upload File</h2>
