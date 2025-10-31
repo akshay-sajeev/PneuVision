@@ -12,30 +12,6 @@ import "./styles/App.css";
  * the Home.tsx page.
  */
 function App() {
-  //const [formData, setFormData] = useState("");
-
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    try {
-      const response = await fetch("/routes", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ username: "example" }),
-      });
-      
-      if (!response.ok) {
-        throw new Error(`Response status: ${response.status}`);
-      }
-      
-      const result = await response.json();
-      console.log(result);
-    } catch (error: any) {
-      console.error("ERROR in catch: " + error.message);
-    }
-  }
-
   return (
     <div className="app-root">
       <Navbar />
@@ -50,14 +26,3 @@ function App() {
 }
 
 export default App;
-
-
-/*
-    <>
-      <form onSubmit={handleSubmit}>
-        <input id="test" type="text" value={formData} onChange={(e) => setFormData(e.target.value)}/>
-        <input id="submit" type="submit" />
-      </form>
-    </>
-    
-*/
