@@ -4,36 +4,54 @@
   text-align: center;
 }
 
-/* App specific styles to match the provided design */
 :root {
   --pv-purple: #7b4ff3;
   --pv-deep: #7b38e6;
   --pv-lilac: #d8c3ff;
+  --navbar-height: 7vh;
+  --sidebar-width: 4vw;
+  --sidebar-expanded: 14vw;
 }
 
 html, body, #root {
   height: 100%;
+  background: #fff;
+  margin: 0;
+  padding: 0;
 }
 
-/* make the root a centered column so header and main stack and center */
 .app-root {
   min-height: 100vh;
   width: 100vw;
   background: #fff;
-  overflow-x: auto;
+  overflow-x: hidden;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0; 
+  margin: 0;
   padding: 0;
 }
 
-/*
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-*/
+.page-container {
+  margin-top: var(--navbar-height);
+  margin-left: var(--sidebar-width);
+  padding: 5vh 5vw;
+  width: calc(100vw - var(--sidebar-width));
+  min-height: calc(100vh - var(--navbar-height));
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  transition: all 0.4s ease; 
+}
+
+.profile-bar.expanded ~ .page-container {
+  margin-left: var(--sidebar-expanded);
+  width: calc(100vw - var(--sidebar-expanded));
+}
+
 .login-card {
   width: 50vw;
   max-width: 88vw;
@@ -52,19 +70,18 @@ html, body, #root {
   border-radius: 999px;
   background: #f7f0ff;
   border: none;
-  height: 56px;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  height: 6vh;
+  padding: 0 2vw;
   box-shadow: none;
-  width: 220px;
+  width: 20vw;
   max-width: 76%;
-  text-align: center; /* center placeholder and input text */
+  text-align: center;
   font-size: 0.95rem;
 }
 
 .pill-input:focus {
   outline: none;
-  box-shadow: 0 0 0 4px rgba(123,79,243,0.08);
+  box-shadow: 0 0 0 0.4vw rgba(123,79,243,0.08);
 }
 
 .signin-btn {
@@ -72,51 +89,51 @@ html, body, #root {
   color: white;
   font-weight: 700;
   font-size: 1.25rem;
-  width: 180px;
-  height: 56px;
+  width: 15vw;
+  height: 6vh;
   border-radius: 999px;
-  border: 2px solid #6b28d6;
-  box-shadow: 0 10px 20px rgba(123,79,243,0.18);
+  border: 0.2vw solid #6b28d6;
+  box-shadow: 0 1vh 2vh rgba(123,79,243,0.18);
   transition: all .5s;
 }
 
 .signin-btn:hover {
-  border: 2px solid white;
+  border: 0.2vw solid white;
 }
 
-/* Center spacing for the card */
 main.container {
-  height: calc(100vh - 72px);
+  height: calc(100vh - var(--navbar-height));
   display: flex;
-  align-items: flex-start; 
+  align-items: flex-start;
   justify-content: center;
   padding-top: 10vh;
 }
 
-/* ensure no dark vertical bar appears on the left */
-html, body, #root, .app-root {
-  background: #fff;
-}
-
-/* Larger screens: make card a bit wider and centered vertically like the screenshot */
 @media (min-width: 1200px) {
   .login-card {
-    width: 50vw;
-    padding: 5%;
+    width: 45vw;
+    padding: 4%;
   }
   .pill-input {
-    width: 240px;
-    max-width: 78%;
+    width: 18vw;
   }
   .signin-btn {
-    width: 200px;
-    height: 58px;
+    width: 12vw;
+    height: 6vh;
     font-size: 1.4rem;
   }
-  /* larger top padding on wide screens for visual balance */
-  /*
-  main.container {
-    padding-top: 160px;
-  }
-  */
 }
+
+html, body {
+  height: auto;
+  min-height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#root, .app-root {
+  height: auto;
+  min-height: 100%;
+  overflow-y: visible;
+}
+

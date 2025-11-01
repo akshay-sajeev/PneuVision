@@ -1,37 +1,66 @@
+:root {
+  --pv-purple: #7b4ff3;
+  --pv-deep: #7b38e6;
+  --pv-lilac: #d8c3ff;
+  --navbar-height: 7vh;
+}
+
 .profile-bar {
-    background-color:blueviolet;
-    color: white;
-    left: 0;
-    top: var(--navbar-height);
-    height: 100vh;
-    width: 10vw;
-    flex-direction: column;
-    position: fixed;
-    transition: width 0.3 ease;
-    overflow: hidden;
-    transition: all 1s;
+  background-color: var(--pv-purple);
+  color: white;
+  position: fixed;
+  left: 0;
+  top: var(--navbar-height);
+  height: 93vh;
+  width: 4vw; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.4s ease;
+  overflow: hidden;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+  z-index: 15;
 }
 
 .profile-bar.expanded {
-    background-color: white;
-    border-right: 2px solid blueviolet;
-    color: blueviolet;
-    border-width: 2px;
-    width: 20vw;
-}
-
-.profile-options {
-    gap: 1px;
-    display: flex;
-    flex-direction: column;
+  background-color: white;
+  border-right: 0.2vw solid var(--pv-purple);
+  color: var(--pv-purple);
+  width: 14vw;
 }
 
 .pb-header {
-    font-size: xx-large;
+  font-size: 2vw;
+  padding: 2vh 0;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.pb-header:hover {
+  color: var(--pv-lilac);
+}
+
+.profile-options {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 2vh;
+  align-items: center;
 }
 
 .pb-el {
-    padding: 2vh;
-    background-color: inherit;
-    color: blueviolet;
+  width: 80%;
+  padding: 1.5vh 0;
+  border: none;
+  background: transparent;
+  color: var(--pv-purple);
+  font-weight: 600;
+  border-radius: 0.8vw;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pb-el:hover {
+  background-color: var(--pv-lilac);
+  color: white;
+  width: 85%;
 }

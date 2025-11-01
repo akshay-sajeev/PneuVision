@@ -2,7 +2,7 @@
   --pv-purple: #7b4ff3;
   --pv-deep: #7b38e6;
   --pv-lilac: #d8c3ff;
-  --navbar-height: 72px;
+  --navbar-height: 7vh;
 }
 
 .app-header {
@@ -11,8 +11,8 @@
   height: var(--navbar-height);
   position: fixed;
   box-sizing: border-box;
-  background: transparent;
-  border-bottom: 3px solid #000;
+  background: #ffffff; 
+  border-bottom: 0.3vh solid #000;
   z-index: 20;
   display: flex;
   justify-content: center;
@@ -20,19 +20,20 @@
   margin: 0;
   left: 0;
   padding: 0;
+  box-shadow: 0 0.3vh 1vh rgba(0, 0, 0, 0.08);
 }
 
 .app-header nav {
   position: absolute;
-  right: 2rem;
+  right: 4vw;
   display: flex;
-  gap: 1rem;
+  gap: 2vw;
 }
 
 .app-title {
   color: var(--pv-purple);
   font-weight: 700;
-  font-size: 28px;
+  font-size: 2vw;
   text-align: center;
   position: absolute;
   left: 50%;
@@ -45,15 +46,24 @@
 .nav-link {
   color: #111;
   font-weight: 600;
-  padding: 0.5rem 1rem;
+  padding: 0.8vh 1.6vw;
   z-index: 40;
   background: transparent;
   border: none;
+  border-radius: 1.2vw;
   cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  background: rgba(123, 79, 243, 0.08);
 }
 
 .btn-home {
   background: linear-gradient(180deg, #b894ff, var(--pv-deep));
   color: white !important;
-  border-radius: 1rem;
+  border-radius: 1.2vw;
+  box-shadow: 0 0 0.8vw rgba(123, 79, 243, 0.4);
+  font-weight: 700;
 }
