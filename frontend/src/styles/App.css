@@ -137,3 +137,37 @@ html, body {
   overflow-y: visible;
 }
 
+.login-title {
+  color: var(--pv-purple);
+  font-weight: 800;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.home-upload-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  width: 14vw;              
+  height: 6vh;             
+  font-size: 1.2vw;         
+  font-weight: 700;
+  border-radius: 5vw;     
+
+  background: linear-gradient(180deg, var(--pv-deep), #6b28d6);
+  color: white;
+  border: 0.2vw solid #6b28d6;
+  box-shadow: 0 0.8vw 2vw rgba(123,79,243,0.18);
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 3vh;
+}
+
+.home-upload-btn:hover {
+  border-color: white;
+  transform: translateY(-0.5vh);
+}
