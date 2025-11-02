@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
@@ -7,15 +7,20 @@ import tensorflow as tf
 import cv2, os, uuid
 
 app = Flask(__name__)
-CORS(app, origins="*")  # Allow all origins for development
+CORS(app, origins="*")
 
 model = load_model("pneuvision_final.h5")
 IMG_SIZE = 224
 
-UPLOAD_FOLDER = "uploads"
-RESULT_FOLDER = "results"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+UPLOAD_FOLDER = os.path.join(BASE_DIR, "uploads")
+RESULT_FOLDER = os.path.join(BASE_DIR, "results")
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(RESULT_FOLDER, exist_ok=True)
+
+@app.route("/results/<filename>")
+def get_result_image(filename):
+    return send_from_directory(RESULT_FOLDER, filename)
 
 def preprocess_image(file_path):
     img = image.load_img(file_path, target_size=(IMG_SIZE, IMG_SIZE))
@@ -24,7 +29,6 @@ def preprocess_image(file_path):
 
 def generate_gradcam(img_array):
     conv_layers = [layer.name for layer in model.layers if isinstance(layer, tf.keras.layers.Conv2D)]
-    
     if not conv_layers:
         for layer in model.layers:
             if hasattr(layer, "layers"):
@@ -52,16 +56,8 @@ def generate_gradcam(img_array):
     heatmap = tf.reduce_sum(tf.multiply(pooled_grads, conv_outputs), axis=-1)
     heatmap = np.maximum(heatmap, 0)
     heatmap /= np.max(heatmap) + 1e-8
-    heatmap = cv2.resize(heatmap, (224, 224)) 
+    heatmap = cv2.resize(heatmap, (224, 224))
     return np.uint8(255 * heatmap)
-
-
-
-@app.route("/routes", methods=["POST"])
-def demo():
-    data = request.get_json()
-    print(f"Received data: {data} and type of username is {type(data['username'])}")
-    return jsonify({"message": "Noted!"})
 
 @app.route("/predict", methods=["POST"])
 def predict():
@@ -78,19 +74,19 @@ def predict():
     label = "Pneumonia" if pred >= 0.718 else "Normal"
     confidence = round(float(pred if pred >= 0.5 else 1 - pred) * 100, 2)
 
-    # Generate heatmap
     heatmap = generate_gradcam(img_array)
     orig = cv2.imread(file_path)
     orig = cv2.resize(orig, (IMG_SIZE, IMG_SIZE))
     heatmap_color = cv2.applyColorMap(heatmap, cv2.COLORMAP_JET)
     overlay = cv2.addWeighted(orig, 0.6, heatmap_color, 0.4, 0)
+
     result_path = os.path.join(RESULT_FOLDER, filename)
     cv2.imwrite(result_path, overlay)
 
     return jsonify({
         "label": label,
         "confidence": confidence,
-        "image_path": f"/{result_path}"
+        "image_path": f"/results/{filename}"
     })
 
 if __name__ == "__main__":
