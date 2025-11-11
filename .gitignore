@@ -40,3 +40,6 @@ build/
 .DS_Store
 *.log
 .env*
+
+# firebase configuration
+frontend/src/firebaseConfig.js
