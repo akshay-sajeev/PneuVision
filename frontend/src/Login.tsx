@@ -3,8 +3,10 @@ import { signInWithEmailAndPassword,
          createUserWithEmailAndPassword
 } from "firebase/auth";
 import { useState, type ChangeEvent } from "react";
+import { Navigate } from "react-router-dom";
 import ProfileBar from "./components/ProfileBar";
 import Navbar from "./components/Navbar";
+import { useAuth } from "./AuthProvider";
 import "./styles/App.css";
 
 /* Custom type to hold user email and password */
@@ -24,6 +26,16 @@ function Login() {
     email: "",
     password: ""
   });
+
+  /* Check if logged in already */
+  const { user, loading } = useAuth();
+  if (loading) {
+    return <p>Loading...</p>
+  }
+
+  if (user) {
+    return <Navigate to="/" />; // If logged in, go to home page
+  }
   
   /* Handles when the email/password fields experience user input */
   function handleChange(e: ChangeEvent<HTMLInputElement>) {

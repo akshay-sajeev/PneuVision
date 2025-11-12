@@ -27,7 +27,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }, []);
 
     return (
-        <AuthContext.Provider value={{  user, loading }}>
+        <AuthContext.Provider value={{ user, loading }}>
             {children}
         </AuthContext.Provider>
     );
@@ -36,7 +36,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 export function useAuth() {
     const context = useContext(AuthContext);
     if (context === undefined) {
-        console.log("The component is not being placed inside a context");
+        throw new Error("The component is not being placed inside a context");
     }
 
     return context;
