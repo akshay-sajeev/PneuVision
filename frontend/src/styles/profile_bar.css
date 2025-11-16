@@ -5,7 +5,6 @@
   --navbar-height: 72px;
 }
 
-/* SIDEBAR BASE */
 .sidebar {
   position: fixed;
   top: var(--navbar-height);
@@ -17,7 +16,7 @@
 
   display: flex;
   flex-direction: column;
-  align-items: stretch;          /* STRETCH CHILDREN FULL WIDTH */
+  align-items: stretch;         
   text-align: center;
 
   padding-top: 2vh;
@@ -34,7 +33,6 @@
   border-right: 0.2vw solid var(--pv-purple);
 }
 
-/* SCROLLABLE CONTENT */
 .sidebar-content {
   flex: 1;
   width: 100%;
@@ -43,11 +41,10 @@
 
   display: flex;
   flex-direction: column;
-  align-items: stretch;          /* CHILD ROWS TAKE FULL WIDTH */
+  align-items: stretch;         
   gap: 2vh;
 }
 
-/* TOGGLE BUTTON */
 .sidebar-toggle {
   font-size: 2vw;
   cursor: pointer;
@@ -56,7 +53,6 @@
   text-align: center;
 }
 
-/* USER SECTION */
 .user-section {
   width: 100%;
   display: flex;
@@ -71,8 +67,8 @@
   min-width: 40px;
   min-height: 40px;
 
-  background-size: cover;      /* fills the circle */
-  background-position: center; /* centers the face */
+  background-size: cover;      
+  background-position: center;
   background-repeat: no-repeat;
 
   border: 0.2vw solid var(--pv-purple);
@@ -86,7 +82,6 @@
   align-items: center;
 }
 
-/* LABELS */
 .sidebar-label {
   font-weight: 700;
   font-size: 1.3vw;
@@ -94,9 +89,8 @@
   white-space: nowrap;
 }
 
-/* LINKS */
 .sidebar-link {
-  width: 100%;                      /* FULL WIDTH */
+  width: 100%;                      
   padding: 1.2vh 0.5vw;
 
   display: flex;
@@ -106,7 +100,7 @@
 
   font-size: 1.1vw;
   text-decoration: none;
-  border-radius: 0;                 /* ROW LOOK, NOT PILL */
+  border-radius: 0;               
   color: inherit;
   background: transparent;
 
@@ -121,15 +115,14 @@
 .sidebar-link.active {
   background: rgba(123, 79, 243, 0.25);
   font-weight: 700;
-  border-left: 0.4vw solid var(--pv-purple);  /* LEFT ACCENT */
+  border-left: 0.4vw solid var(--pv-purple); 
 }
 
-/* LOGOUT BUTTON — now purple */
 .sidebar-logout {
-  width: 100%;                   /* full width */
+  width: 100%;                  
   padding: 1.5vh 0;
-  background: var(--pv-purple);  /* purple background */
-  color: white;                  /* white text */
+  background: var(--pv-purple); 
+  color: white;               
   border: none;
   font-size: 1.1vw;
   font-weight: 600;
@@ -139,16 +132,14 @@
   margin-top: auto;
   margin-bottom: 2vh;
 
-  border-radius: 0;              /* clean full-width look */
+  border-radius: 0;            
   transition: background 0.2s ease;
 }
 
 .sidebar-logout:hover {
-  background: var(--pv-deep);    /* darker purple on hover */
+  background: var(--pv-deep);   
 }
 
-
-/* COLLAPSED STATE: HIDE TEXT, KEEP CENTERED */
 .sidebar:not(.open) .user-info,
 .sidebar:not(.open) .sidebar-label,
 .sidebar:not(.open) .link-text {

@@ -19,7 +19,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
-            setUser(() => user); // if user is null, then not signed in
+            setUser(() => user); 
             setLoading(false);
         })
 

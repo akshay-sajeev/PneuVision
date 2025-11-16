@@ -48,7 +48,6 @@ export default function Compare() {
 
       <div className="compare-inputs">
         
-        {/* ======= Scan 1 Box ======= */}
         <div
           className="compare-box"
           onClick={() => document.getElementById("file1")?.click()}
@@ -80,7 +79,6 @@ export default function Compare() {
           />
         </div>
 
-        {/* ======= Scan 2 Box ======= */}
         <div
           className="compare-box"
           onClick={() => document.getElementById("file2")?.click()}
@@ -113,12 +111,10 @@ export default function Compare() {
         </div>
       </div>
 
-      {/* ======= Compare Button ======= */}
       <button className="compare-btn" onClick={handleCompare}>
         Compare Scans
       </button>
 
-      {/* ======= Results Section ======= */}
       {results && (
         <div className="compare-results">
           <div className="compare-col">

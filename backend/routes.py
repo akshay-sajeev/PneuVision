@@ -93,9 +93,6 @@ def predict():
     result_path = os.path.join(RESULT_FOLDER, filename)
     cv2.imwrite(result_path, overlay)
 
-    # ----------------------
-    # SAVE HISTORY ENTRY
-    # ----------------------
     entry = {
         "filename": filename,
         "label": label,

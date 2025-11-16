@@ -8,7 +8,7 @@ export default function HistoryPage() {
   useEffect(() => {
     fetch("http://localhost:5001/history")
       .then((res) => res.json())
-      .then((data) => setEntries(data.reverse())) // newest first
+      .then((data) => setEntries(data.reverse())) 
       .catch(() => setEntries([]));
   }, []);
 

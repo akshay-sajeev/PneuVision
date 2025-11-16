@@ -1,17 +1,24 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebaseConfig";
 import { useAuth } from "../AuthProvider";
-import "../styles/profile_bar.css";
 import profilePic from "../assets/square-image.jpg";
-
+import "../styles/profile_bar.css";
 
 export default function ProfileBar() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+  const { user } = useAuth();
 
-  function handleLogout() {
-    logout?.();
+  async function handleLogout() {
+    try {
+      await signOut(auth);
+      navigate("/login");
+    } catch (err) {
+      console.error("Error signing out:", err);
+    }
   }
 
   return (
@@ -21,45 +28,56 @@ export default function ProfileBar() {
       </div>
 
       <div className="sidebar-content">
-        {/* User */}
         <div className="user-section">
-          <div className="user-avatar"style={{ backgroundImage: `url(${profilePic})` }}/>
-          {isOpen && (
-            <div className="user-info">
-              <p className="user-name">{user?.email?.split("@")[0] || "Guest"}</p>
-              <p className="user-email">{user?.email || "Not signed in"}</p>
-            </div>
-          )}
+          <div className="user-avatar"style={{ backgroundImage: `url(${profilePic})` }}/> 
+          <div className="user-info">
+            <p className="user-name">
+              {user?.email?.split("@")[0] || "Guest"}
+            </p>
+            <p className="user-email">
+              {user?.email || "Not signed in"}
+            </p>
+          </div>
         </div>
 
-        {/* Navigation */}
         <div className="sidebar-section">
-          {isOpen && <p className="sidebar-label">Navigation</p>}
+          <p className="sidebar-label">Navigation</p>
+
           <Link
-            className={`sidebar-link ${location.pathname === "/" ? "active" : ""}`}
+            className={`sidebar-link ${
+              location.pathname === "/" ? "active" : ""
+            }`}
             to="/"
           >
             <span className="link-text">Dashboard</span>
           </Link>
+
           <Link
-            className={`sidebar-link ${location.pathname === "/upload" ? "active" : ""}`}
+            className={`sidebar-link ${
+              location.pathname === "/upload" ? "active" : ""
+            }`}
             to="/upload"
           >
             <span className="link-text">Upload Scan</span>
           </Link>
+
           <Link
-            className={`sidebar-link ${location.pathname === "/history" ? "active" : ""}`}
+            className={`sidebar-link ${
+              location.pathname === "/history" ? "active" : ""
+            }`}
             to="/history"
           >
             <span className="link-text">My Scans</span>
           </Link>
         </div>
 
-        {/* Tools */}
         <div className="sidebar-section">
-          {isOpen && <p className="sidebar-label">Tools</p>}
+          <p className="sidebar-label">Tools</p>
+
           <Link
-            className={`sidebar-link ${location.pathname === "/compare" ? "active" : ""}`}
+            className={`sidebar-link ${
+              location.pathname === "/compare" ? "active" : ""
+            }`}
             to="/compare"
           >
             <span className="link-text">Compare Scans</span>
