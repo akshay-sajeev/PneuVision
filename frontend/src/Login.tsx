@@ -1,48 +1,34 @@
 import { auth } from "./firebaseConfig";
-import { signInWithEmailAndPassword, 
-         createUserWithEmailAndPassword
-} from "firebase/auth";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 import { useState, type ChangeEvent } from "react";
 import { Navigate } from "react-router-dom";
-import ProfileBar from "./components/ProfileBar";
 import Navbar from "./components/Navbar";
 import { useAuth } from "./AuthProvider";
 import "./styles/App.css";
 
-/* Custom type to hold user email and password */
 type UserCreds = {
-  email: string,
-  password: string,
+  email: string;
+  password: string;
 };
 
-/**
- * Manages use credentials by storing them in state
- * @returns Component handling user login/signup and authentication
- */
 function Login() {
   const [isSignUp, setIsSignUp] = useState(false);
-  const [error, setError] = useState(""); 
+  const [error, setError] = useState("");
   const [credentials, setCredentials] = useState<UserCreds>({
     email: "",
     password: ""
   });
 
-  /* Check if logged in already */
   const { user, loading } = useAuth();
-  if (loading) {
-    return <p>Loading...</p>
-  }
 
-  if (user) {
-    return <Navigate to="/" />; // If logged in, go to home page
-  }
-  
-  /* Handles when the email/password fields experience user input */
+  if (loading) return <p>Loading...</p>;
+  if (user) return <Navigate to="/" />;
+
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
-    setCredentials(prevCred => ({
-      ...prevCred,
-      [name]: value,
+    setCredentials(prev => ({
+      ...prev,
+      [name]: value
     }));
   }
 
@@ -56,52 +42,59 @@ function Login() {
       }
     } catch (e: any) {
       if (e.code === "auth/user-not-found") {
-        setError(() => "Please sign up instead.");
+        setError("No account found. Please sign up.");
       } else if (e.code === "auth/wrong-password") {
-        setError(() => "Password is incorrect.");
+        setError("Incorrect password.");
       } else {
         setError(e.code);
       }
     }
   }
 
-  function toggleSignUp(e: React.MouseEvent<HTMLButtonElement>) {
+  function toggleMode(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
-    setIsSignUp(signUp => !signUp);
+    setIsSignUp(prev => !prev);
+    setError("");
   }
 
   return (
     <div className="app-root">
       <Navbar />
-      <ProfileBar />
-      <main className="container">
-        <form className="login-card" onSubmit={handleSubmit}>
-          <h1 className="login-title">{isSignUp ? "Sign Up" : "Log In"}</h1>
-          <p className="signup-toggle">
-            {isSignUp 
-              ? <button onClick={toggleSignUp}>Log in instead</button> 
-              : <button onClick={toggleSignUp}>Sign up instead</button>
-            }
+
+      <main className="container login-container">
+        <form className="login-card clean-login-card" onSubmit={handleSubmit}>
+          
+          <h1 className="login-title">{isSignUp ? "Create Account" : "Welcome Back"}</h1>
+
+          <p className="login-subtitle">
+            {isSignUp ? "Sign up to get started" : "Log in to continue"}
           </p>
+
           <input
-            className="pill-input"
+            className="pill-input wide-input"
             name="email"
-            type="text"
+            type="email"
             placeholder="Email"
             onChange={handleChange}
           />
           <input
-            className="pill-input"
+            className="pill-input wide-input"
             name="password"
             type="password"
             placeholder="Password"
             onChange={handleChange}
           />
-          <button className="signin-btn" type="submit" style={{ marginTop: '2.5rem' }}>
+
+          <button className="signin-btn wide-btn" type="submit">
             {isSignUp ? "Sign Up" : "Log In"}
           </button>
+
+          <button className="toggle-mode-btn" onClick={toggleMode}>
+            {isSignUp ? "Already have an account? Log in" : "New here? Create an account"}
+          </button>
+
+          {error && <p className="login-error-msg">{error}</p>}
         </form>
-        <p className="login-error-msg">{error}</p>
       </main>
     </div>
   );

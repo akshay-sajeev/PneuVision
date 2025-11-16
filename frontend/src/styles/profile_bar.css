@@ -2,65 +2,164 @@
   --pv-purple: #7b4ff3;
   --pv-deep: #7b38e6;
   --pv-lilac: #d8c3ff;
-  --navbar-height: 7vh;
+  --navbar-height: 72px;
 }
 
-.profile-bar {
-  background-color: var(--pv-purple);
-  color: white;
+/* SIDEBAR BASE */
+.sidebar {
   position: fixed;
-  left: 0;
   top: var(--navbar-height);
-  height: 93vh;
-  width: 4vw; 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: all 0.4s ease;
-  overflow: hidden;
-  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
-  z-index: 15;
-}
-
-.profile-bar.expanded {
-  background-color: white;
-  border-right: 0.2vw solid var(--pv-purple);
-  color: var(--pv-purple);
-  width: 14vw;
-}
-
-.pb-header {
-  font-size: 2vw;
-  padding: 2vh 0;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-.pb-header:hover {
-  color: var(--pv-lilac);
-}
-
-.profile-options {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin-top: 2vh;
-  align-items: center;
-}
-
-.pb-el {
-  width: 80%;
-  padding: 1.5vh 0;
-  border: none;
-  background: transparent;
-  color: var(--pv-purple);
-  font-weight: 600;
-  border-radius: 0.8vw;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.pb-el:hover {
-  background-color: var(--pv-lilac);
+  left: 0;
+  width: 5vw;
+  height: calc(100vh - var(--navbar-height));
+  background: var(--pv-purple);
   color: white;
-  width: 85%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;          /* STRETCH CHILDREN FULL WIDTH */
+  text-align: center;
+
+  padding-top: 2vh;
+  transition: width 0.3s ease;
+
+  overflow: hidden;
+  z-index: 12;
+}
+
+.sidebar.open {
+  width: 18vw;
+  background: white;
+  color: var(--pv-purple);
+  border-right: 0.2vw solid var(--pv-purple);
+}
+
+/* SCROLLABLE CONTENT */
+.sidebar-content {
+  flex: 1;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;          /* CHILD ROWS TAKE FULL WIDTH */
+  gap: 2vh;
+}
+
+/* TOGGLE BUTTON */
+.sidebar-toggle {
+  font-size: 2vw;
+  cursor: pointer;
+  margin-bottom: 2vh;
+  color: inherit;
+  text-align: center;
+}
+
+/* USER SECTION */
+.user-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1vh;
+}
+
+.user-avatar {
+  width: 3vw;
+  height: 3vw;
+  min-width: 40px;
+  min-height: 40px;
+
+  background-size: cover;      /* fills the circle */
+  background-position: center; /* centers the face */
+  background-repeat: no-repeat;
+
+  border: 0.2vw solid var(--pv-purple);
+  border-radius: 50%;
+}
+
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* LABELS */
+.sidebar-label {
+  font-weight: 700;
+  font-size: 1.3vw;
+  margin-bottom: 1vh;
+  white-space: nowrap;
+}
+
+/* LINKS */
+.sidebar-link {
+  width: 100%;                      /* FULL WIDTH */
+  padding: 1.2vh 0.5vw;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+
+  font-size: 1.1vw;
+  text-decoration: none;
+  border-radius: 0;                 /* ROW LOOK, NOT PILL */
+  color: inherit;
+  background: transparent;
+
+  box-sizing: border-box;
+  transition: background 0.2s ease;
+}
+
+.sidebar-link:hover {
+  background: rgba(123, 79, 243, 0.15);
+}
+
+.sidebar-link.active {
+  background: rgba(123, 79, 243, 0.25);
+  font-weight: 700;
+  border-left: 0.4vw solid var(--pv-purple);  /* LEFT ACCENT */
+}
+
+/* LOGOUT BUTTON — now purple */
+.sidebar-logout {
+  width: 100%;                   /* full width */
+  padding: 1.5vh 0;
+  background: var(--pv-purple);  /* purple background */
+  color: white;                  /* white text */
+  border: none;
+  font-size: 1.1vw;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+
+  margin-top: auto;
+  margin-bottom: 2vh;
+
+  border-radius: 0;              /* clean full-width look */
+  transition: background 0.2s ease;
+}
+
+.sidebar-logout:hover {
+  background: var(--pv-deep);    /* darker purple on hover */
+}
+
+
+/* COLLAPSED STATE: HIDE TEXT, KEEP CENTERED */
+.sidebar:not(.open) .user-info,
+.sidebar:not(.open) .sidebar-label,
+.sidebar:not(.open) .link-text {
+  display: none;
+}
+
+.sidebar:not(.open) .sidebar-link,
+.sidebar:not(.open) .sidebar-logout {
+  justify-content: center;
+}
+
+.sidebar:not(.open) .user-section {
+  justify-content: center;
 }

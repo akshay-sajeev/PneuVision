@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import "../styles/navbar.css";
+import logo from "../assets/PneuVisionTitle.png";
 
 function Navbar() {
   const location = useLocation();
@@ -7,7 +8,8 @@ function Navbar() {
   return (
     <div>
       <header className="app-header">
-        <h1 className="app-title">PneuVision</h1>
+        <img src={logo} alt="PneuVision Logo" className="nav-logo" />
+
         <nav>
           <Link
             className={`nav-link ${
@@ -17,14 +19,7 @@ function Navbar() {
           >
             About
           </Link>
-          <Link
-            className={`nav-link ${
-              location.pathname === "/login" ? "btn-home" : ""
-            }`}
-            to="/login"
-          >
-            Login
-          </Link>
+
           <Link
             className={`nav-link ${
               location.pathname === "/upload" ? "btn-home" : ""
@@ -32,6 +27,15 @@ function Navbar() {
             to="/upload"
           >
             Upload
+          </Link>
+
+          <Link
+            className={`nav-link ${
+              location.pathname === "/login" ? "btn-home" : ""
+            }`}
+            to="/login"
+          >
+            Login
           </Link>
         </nav>
       </header>

@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import "../styles/upload.css";
-import ProfileBar from "../components/ProfileBar";
 import Navbar from "../components/Navbar";
 
 export default function UploadPage() {
@@ -62,7 +61,6 @@ export default function UploadPage() {
   return (
     <div className="up-root">
       <Navbar />
-      <ProfileBar />
 
       <main className="up-main">
         <h2 className="up-section-title">Upload Chest X-Ray</h2>

@@ -87,14 +87,19 @@ html, body, #root {
   background: linear-gradient(180deg, var(--pv-deep), #6b28d6);
   color: white;
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: 1.25 rem;
   width: 15vw;
   height: 6vh;
   border-radius: 999px;
   border: 0.2vw solid #6b28d6;
   box-shadow: 0 1vh 2vh rgba(123,79,243,0.18);
   transition: all .5s;
+  display: flex;            
+  justify-content: center;  
+  align-items: center;      
+  cursor: pointer;
 }
+
 
 .signin-btn:hover {
   border: 0.2vw solid white;
@@ -175,3 +180,91 @@ html, body {
   color: grey;
   background-color: rgba(0, 0, 0, 0);
 }
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10vh;
+  width: 100%;
+}
+
+.clean-login-card {
+  width: 40vw;
+  max-width: 70vw;
+  padding: 4vh 4vw;
+  border-radius: 2vw;
+  background: white;
+  border: 0.2vw solid var(--pv-purple);
+  box-shadow: 0 0 1.8vw rgba(123, 79, 243, 0.15);
+}
+
+.login-title {
+  font-size: 2.4vw;
+  margin: 0;
+  color: var(--pv-purple);
+  font-weight: 700;
+}
+
+.login-subtitle {
+  font-size: 1.2vw;
+  color: #666;
+  margin-bottom: 3vh;
+}
+
+.wide-input {
+  width: 80%;
+  margin-top: 1.4vh;
+}
+
+.wide-btn {
+  width: 70%;
+  margin-top: 3vh;
+}
+
+.toggle-mode-btn {
+  border: none;
+  background: transparent;
+  color: var(--pv-purple);
+  margin-top: 2vh;
+  font-size: 1vw;
+  cursor: pointer;
+}
+
+.login-error-msg {
+  color: red;
+  margin-top: 2vh;
+  font-size: 1vw;
+}
+
+.home-card {
+  padding: 5vh 4vw;
+  text-align: center;
+}
+
+.home-title {
+  font-size: 3vw;
+  font-weight: 800;
+  color: var(--pv-purple);
+  margin-bottom: 1vh;
+}
+
+.home-subtitle {
+  font-size: 1.4vw;
+  color: #555;
+  margin-bottom: 4vh;
+}
+
+.home-description {
+  font-size: 1.1vw;
+  line-height: 1.7;
+  color: #333;
+  margin-bottom: 5vh;
+  padding: 0 2vw;
+}
+
+.home-upload-btn {
+  margin-top: 2vh;
+  width: 18vw; 
+}
+

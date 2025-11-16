@@ -1,58 +1,75 @@
 import { useState } from "react";
-import { useNavigate} from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../AuthProvider";
-import { auth } from "../firebaseConfig";
-import "../styles/profile_bar.css"
-import { signOut } from "firebase/auth";
+import "../styles/profile_bar.css";
+import profilePic from "../assets/square-image.jpg";
+
 
 export default function ProfileBar() {
   const [isOpen, setIsOpen] = useState(false);
-  const navigate = useNavigate();
+  const location = useLocation();
+  const { user, logout } = useAuth();
 
-  /* Check if the user is logged in */
-  const { loading, user } = useAuth();
-  if (loading) {
-    return <p>Loading...</p>
-  } 
-
-  /* Log the user out if they are logged in */
-  async function handleLog(e: React.MouseEvent<HTMLButtonElement>) {
-    e.preventDefault();
-
-    try {
-      if (user) {
-        navigate("/login");
-        await signOut(auth);
-      } else {
-        navigate("/login");
-      }
-    } catch (e: any) {
-      console.error("Error with login/logout: ", e);
-    }
+  function handleLogout() {
+    logout?.();
   }
 
   return (
-    <div 
-      id="profile-bar" 
-      className={`profile-bar ${isOpen ? "expanded" : ""}`}
-    >
-      <div 
-        className="pb-header"
-        onClick={() => setIsOpen(isOpen => !isOpen)}
-      >
+    <div className={`sidebar ${isOpen ? "open" : ""}`}>
+      <div className="sidebar-toggle" onClick={() => setIsOpen(o => !o)}>
         ☰
       </div>
-      <div className="profile-options">
-          {isOpen && <button id="logout" className="pb-el" onClick={handleLog}>
-            {user ? "Log Out" : "Log In"}
-          </button>}
-          {isOpen && <button id="Account" className="pb-el">
-            Account
-          </button>}
-          {isOpen && <button id="Profile" className="pb-el">
-            Profile 
-          </button>}
+
+      <div className="sidebar-content">
+        {/* User */}
+        <div className="user-section">
+          <div className="user-avatar"style={{ backgroundImage: `url(${profilePic})` }}/>
+          {isOpen && (
+            <div className="user-info">
+              <p className="user-name">{user?.email?.split("@")[0] || "Guest"}</p>
+              <p className="user-email">{user?.email || "Not signed in"}</p>
+            </div>
+          )}
+        </div>
+
+        {/* Navigation */}
+        <div className="sidebar-section">
+          {isOpen && <p className="sidebar-label">Navigation</p>}
+          <Link
+            className={`sidebar-link ${location.pathname === "/" ? "active" : ""}`}
+            to="/"
+          >
+            <span className="link-text">Dashboard</span>
+          </Link>
+          <Link
+            className={`sidebar-link ${location.pathname === "/upload" ? "active" : ""}`}
+            to="/upload"
+          >
+            <span className="link-text">Upload Scan</span>
+          </Link>
+          <Link
+            className={`sidebar-link ${location.pathname === "/history" ? "active" : ""}`}
+            to="/history"
+          >
+            <span className="link-text">My Scans</span>
+          </Link>
+        </div>
+
+        {/* Tools */}
+        <div className="sidebar-section">
+          {isOpen && <p className="sidebar-label">Tools</p>}
+          <Link
+            className={`sidebar-link ${location.pathname === "/compare" ? "active" : ""}`}
+            to="/compare"
+          >
+            <span className="link-text">Compare Scans</span>
+          </Link>
+        </div>
       </div>
+
+      <button className="sidebar-logout" onClick={handleLogout}>
+        <span className="link-text">Log Out</span>
+      </button>
     </div>
   );
 }

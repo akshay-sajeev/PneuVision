@@ -67,3 +67,14 @@
   box-shadow: 0 0 0.8vw rgba(123, 79, 243, 0.4);
   font-weight: 700;
 }
+
+.nav-logo {
+  height: 4vh;         
+  width: auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: contain;
+  z-index: 30;
+}

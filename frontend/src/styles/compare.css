@@ -1,0 +1,89 @@
+.compare-root {
+  width: 100vw;
+  padding-top: 15vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.compare-title {
+  font-size: 3vw;
+  font-weight: 700;
+  color: #7b4ff3;
+}
+
+.compare-form {
+  margin-top: 3vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3vh;
+}
+
+.compare-inputs {
+  display: flex;
+  gap: 3vw;
+  justify-content: center;
+  margin-bottom: 4vh; 
+}
+
+
+.compare-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  gap: 2vh;
+}
+
+.upload-box {
+  width: 20vw;
+  height: 28vh;
+  border: 0.25vw dashed #7b4ff3;
+  border-radius: 1vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #f7f0ff;
+  transition: 0.3s ease;
+}
+
+.upload-box p {
+  margin-top: 1vh;
+  font-weight: 600;
+  color: #7b4ff3;
+}
+
+.upload-box:hover {
+  background: #e7d8ff;
+}
+
+.compare-img {
+  width: 20vw;
+  max-height: 40vh;
+  object-fit: contain;
+  border: 0.25vw solid #7b4ff3;
+  border-radius: 1vw;
+}
+
+.compare-btn {
+  background: #7b4ff3;
+  color: white;
+  padding: 1.2vh 3vw;
+  border-radius: 1vw;
+  font-weight: 700;
+  font-size: 1.3vw;
+  cursor: pointer;
+  border: none;
+}
+
+.compare-results {
+  margin-top: 5vh;
+  display: flex;
+  gap: 5vw;
+}
+
+.compare-col {
+  text-align: center;
+}
