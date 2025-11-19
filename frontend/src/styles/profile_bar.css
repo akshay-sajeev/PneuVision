@@ -1,7 +1,7 @@
 :root {
-  --pv-purple: #7b4ff3;
-  --pv-deep: #7b38e6;
-  --pv-lilac: #d8c3ff;
+  --pv-purple: #582fa5 ;
+  --pv-deep: #2C239D;
+  --pv-lilac: #BC73CE;
   --navbar-height: 72px;
 }
 
@@ -153,4 +153,17 @@
 
 .sidebar:not(.open) .user-section {
   justify-content: center;
+}
+
+.sidebar:not(.open) .sidebar-content {
+  pointer-events: none;
+}
+
+.sidebar:not(.open) .sidebar-toggle {
+  pointer-events: auto;
+}
+
+.sidebar:not(.open) .sidebar-link.active {
+  background: transparent !important;
+  border-left: none !important;
 }

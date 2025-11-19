@@ -9,7 +9,7 @@
 .compare-title {
   font-size: 3vw;
   font-weight: 700;
-  color: #7b4ff3;
+  color: #734EB6;
 }
 
 .compare-form {
@@ -26,7 +26,6 @@
   justify-content: center;
   margin-bottom: 4vh; 
 }
-
 
 .compare-box {
   display: flex;
@@ -52,7 +51,7 @@
 .upload-box p {
   margin-top: 1vh;
   font-weight: 600;
-  color: #7b4ff3;
+  color: #734EB6;
 }
 
 .upload-box:hover {
@@ -63,23 +62,46 @@
   width: 20vw;
   max-height: 40vh;
   object-fit: contain;
-  border: 0.25vw solid #7b4ff3;
+  border: 0.25vw solid #734EB6;
   border-radius: 1vw;
 }
 
 .compare-btn {
-  background: #7b4ff3;
+  background: linear-gradient(180deg, #2C239D, #6b28d6);
   color: white;
+
   padding: 1.2vh 3vw;
-  border-radius: 1vw;
+  border-radius: 5vw;
+
   font-weight: 700;
   font-size: 1.3vw;
+
+  border: 0.2vw solid #6b28d6;
+  box-shadow: 0 0.8vw 2vw rgba(123, 79, 243, 0.18);
+
   cursor: pointer;
-  border: none;
+  transition: all 0.3s ease;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.compare-btn:hover {
+  border-color: white;
+  transform: translateY(-0.4vh);
+  box-shadow: 0 1vw 2.5vw rgba(123, 79, 243, 0.25);
+}
+
+.compare-btn:hover {
+  border-color: white;
+  transform: translateY(-0.4vh);
+  box-shadow: 0 1vw 2.5vw rgba(123, 79, 243, 0.25);
 }
 
 .compare-results {
   margin-top: 5vh;
+  margin-bottom: 5vh;
   display: flex;
   gap: 5vw;
 }

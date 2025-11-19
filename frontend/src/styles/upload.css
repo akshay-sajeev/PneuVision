@@ -1,6 +1,7 @@
 :root {
-  --pv-purple: #7b4ff3;
-  --pv-deep: #7b38e6;
+  --pv-purple: #734EB6 ;
+  --pv-deep: #2C239D;
+  --pv-lilac: #BC73CE;
 }
 
 .up-root {
@@ -29,7 +30,7 @@
 
 
 .up-section-title {
-  color: #a685ff;
+  color: #734EB6;
   margin: 0 0 2vh;
   font-weight: 800;
   font-size: 2vw;

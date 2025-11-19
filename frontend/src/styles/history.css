@@ -10,7 +10,7 @@
 }
 
 .history-title {
-  color: #7b4ff3;
+  color: #734EB6;
   font-size: 3vw;
   font-weight: 800;
   margin-bottom: 3vh;
@@ -25,33 +25,37 @@
 
 .history-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(22vw, 1fr));
-  gap: 2vw;
+  grid-template-columns: repeat(auto-fill, minmax(18vw, 1fr)); 
+  gap: 1.5vw;
   padding-bottom: 5vh;
+  padding-left: 2vw;
+  padding-right: 2vw;
 }
 
 .history-card {
   background: #f7f0ff;
-  border: 2px solid #d8c3ff;
-  border-radius: 1vw;
-  padding: 1.5vw;
+  border: 0.15vw solid #d8c3ff;
+  border-radius: 0.9vw;
+  padding: 1vw;                   
   text-align: center;
+  box-shadow: 0 0.5vw 1.5vw rgba(0, 0, 0, 0.05);
 }
 
 .history-img {
   width: 100%;
-  border-radius: 0.8vw;
+  height: auto;
+  border-radius: 0.6vw;
 }
 
 .history-info {
-  margin-top: 1.5vh;
-  font-size: 1.2vw;
+  margin-top: 1vh;
+  font-size: 1vw;                 
   color: #333;
 }
 
 .history-date {
   display: block;
-  margin-top: 0.5vh;
-  font-size: 1vw;
+  margin-top: 0.4vh;
+  font-size: 0.85vw;     
   color: #777;
 }

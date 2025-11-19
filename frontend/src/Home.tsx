@@ -1,30 +1,44 @@
 import { Link } from "react-router-dom";
+import heroXray from "./assets/hero_xray.png";
+import aiBrain from "./assets/ai_medical.png";
 
 function Home() {
   return (
     <div className="home-root">
-      <main className="container">
-        <div className="login-card home-card">
+      <main className="home-container">
 
-          <h1 className="home-title">Welcome to PneuVision</h1>
-          <p className="home-subtitle">
-            AI-assisted chest X-ray interpretation for fast, confident clinical support.
-          </p>
+        <section className="home-hero-section">
+          <div className="hero-text">
+            <h1 className="hero-title">Smarter Chest X-Ray Analysis</h1>
+            <p className="hero-subtitle">
+              AI-powered interpretation designed to support clinicians with faster, clearer, and more reliable insights.
+            </p>
 
-          <p className="home-description">
-            <strong>PneuVision</strong> helps healthcare professionals evaluate chest X-rays 
-            for signs of pneumonia using advanced AI analysis. The system provides rapid 
-            predictions and intuitive heatmaps that highlight areas of interest, helping 
-            clinicians confirm diagnoses, catch subtle findings, and improve decision-making 
-            accuracy. PneuVision supports clinical expertise by offering an additional layer 
-            of clarity and efficiency within diagnostic workflows.
-          </p>
+            <Link to="/upload">
+              <button className="signin-btn home-hero-btn">Upload Scan</button>
+            </Link>
+          </div>
 
-          <Link to="/upload">
-            <button className="signin-btn home-upload-btn">Upload Scan</button>
-          </Link>
+          <img src={heroXray} alt="Chest X-ray" className="hero-image" />
+        </section>
 
-        </div>
+        <section className="home-info-card">
+          <div className="info-left">
+            <img src={aiBrain} alt="AI medical illustration" className="info-image" />
+          </div>
+
+          <div className="info-right">
+            <h2 className="info-title">Advanced Clinical Assistance</h2>
+
+            <p className="home-description">
+              <strong>PneuVision</strong> assists healthcare professionals in evaluating chest X-rays 
+              for signs of pneumonia using state-of-the-art machine learning. The system generates 
+              predictions and intuitive heatmaps that highlight important regions, helping clinicians 
+              confirm diagnoses, catch subtle abnormalities, and improve workflow efficiency.
+            </p>
+          </div>
+        </section>
+
       </main>
     </div>
   );

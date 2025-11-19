@@ -1,7 +1,7 @@
 :root {
-  --pv-purple: #7b4ff3;
-  --pv-deep: #7b38e6;
-  --pv-lilac: #d8c3ff;
+  --pv-purple: #734EB6 ;
+  --pv-deep: #2C239D;
+  --pv-lilac: #BC73CE;
   --navbar-height: 7vh;
 }
 
@@ -61,7 +61,7 @@
 }
 
 .btn-home {
-  background: linear-gradient(180deg, #b894ff, var(--pv-deep));
+  background: linear-gradient(180deg, #734EB6, var(--pv-deep));
   color: white !important;
   border-radius: 1.2vw;
   box-shadow: 0 0 0.8vw rgba(123, 79, 243, 0.4);

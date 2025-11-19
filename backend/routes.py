@@ -151,7 +151,7 @@ def compare():
     conf1 = round(float(pred1 if pred1 >= 0.5 else 1 - pred1) * 100, 2)
     conf2 = round(float(pred2 if pred2 >= 0.5 else 1 - pred2) * 100, 2)
 
-    # Grad-CAM heatmaps for both
+    # Grad-CAM heatmaps
     heat1 = generate_gradcam(img1)
     heat2 = generate_gradcam(img2)
 
@@ -170,18 +170,37 @@ def compare():
     cv2.imwrite(result1, overlay1)
     cv2.imwrite(result2, overlay2)
 
+    entry1 = {
+        "filename": name1,
+        "label": label1,
+        "confidence": conf1,
+        "timestamp": datetime.now().isoformat(),
+        "image_path": f"/results/{name1}"
+    }
+
+    entry2 = {
+        "filename": name2,
+        "label": label2,
+        "confidence": conf2,
+        "timestamp": datetime.now().isoformat(),
+        "image_path": f"/results/{name2}"
+    }
+
+    # Append to history.json
+    with open(HISTORY_FILE, "r") as f:
+        history = json.load(f)
+
+    history.append(entry1)
+    history.append(entry2)
+
+    with open(HISTORY_FILE, "w") as f:
+        json.dump(history, f, indent=2)
+
     return jsonify({
-        "scan1": {
-            "label": label1,
-            "confidence": conf1,
-            "image_path": f"/results/{name1}"
-        },
-        "scan2": {
-            "label": label2,
-            "confidence": conf2,
-            "image_path": f"/results/{name2}"
-        }
+        "scan1": entry1,
+        "scan2": entry2
     })
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=5001)
